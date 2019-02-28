@@ -17,7 +17,7 @@ class Services extends StatelessWidget {
                 children: <Widget>[
                   ListTile(
                     onTap:() { },
-                    leading: Icon(Icons.album),
+                    leading: Icon(Icons.album), 
                     title: Text(serviceTitle[position]),
                     subtitle: Text(serviceDescription[position]),
                   ),
