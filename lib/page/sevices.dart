@@ -2,36 +2,30 @@ import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 
 class Services extends StatelessWidget {
-
+  var serviceTitle = ['Netflix', 'Spotify', 'Runastic'];
+  var serviceDescription = ['Vos séries en illimité', 'Retrouvez vos musiques partout avec vous', 'Votre partenaire de jogging'];
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Card(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const ListTile(
-                leading: Icon(Icons.album),
-                title: Text('The Enchanted Nightingale'),
-                subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+        child:
+        ListView.builder(
+          itemBuilder: (context, position) {
+            return Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    onTap:() { },
+                    leading: Icon(Icons.album),
+                    title: Text(serviceTitle[position]),
+                    subtitle: Text(serviceDescription[position]),
+                  ),
+                ],
               ),
-              ButtonTheme.bar( // make buttons use the appropriate styles for cards
-                child: ButtonBar(
-                  children: <Widget>[
-                    FlatButton(
-                      child: const Text('BUY TICKETS'),
-                      onPressed: () { /* ... */ },
-                    ),
-                    FlatButton(
-                      child: const Text('LISTEN'),
-                      onPressed: () { /* ... */ },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            );
+          },
+          itemCount: serviceTitle.length,
         ),
       )
     );
