@@ -25,13 +25,14 @@ class DBProvider {
 
   initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "projet.db"); //TestDB premier nom
+    String path = join(documentsDirectory.path, "TestDB.db"); //TestDB premier nom
+    print(path);
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
           await db.execute(
               "CREATE TABLE Service ("
               "id INTEGER PRIMARY KEY,"
-              "name TEXT"
+              "title TEXT"
               ")");
         });
 
@@ -39,8 +40,9 @@ class DBProvider {
   }
 
   destroy() async {
-
-
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    String path = join(documentsDirectory.path, "projet.db"); //TestDB premier nom
+    print(path);
   }
 
   newClient(Client newClient) async {
@@ -125,9 +127,9 @@ class DBProvider {
     int id = table.first["id"];
     //insert to the table using the new id
     var raw = await db.rawInsert(
-        "INSERT Into Service (id,name)"
+        "INSERT Into Service (id,title)"
             " VALUES (?,?)",
-        [id, newService.name]);
+        [id, newService.title]);
     return raw;
   }
 
@@ -135,7 +137,7 @@ class DBProvider {
     final db = await database;
     var res = await db.query("Service");
     List<Service> list =
-    res.isNotEmpty ? res.map((c) => Client.fromMap(c)).toList() : [];
+    res.isNotEmpty ? res.map((c) => Service.fromMap(c)).toList() : [];
     return list;
   }
 

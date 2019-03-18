@@ -22,6 +22,7 @@ class _Resultat extends State<Resultat> {
   var subjectList = ['description1', 'description2', 'description3'];
   final nameController = new TextEditingController();
   final resController = new TextEditingController();
+  String tmp = "Test ";
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,9 @@ class _Resultat extends State<Resultat> {
                 return Dismissible(
                   key: UniqueKey(),
                   background: Container(color: Colors.red),
-                  onDismissed: (direction) {
-                    DBProvider.db.deleteClient(item.id);
-                  },
                   child: ListTile(
-                    title: Text(item.name),
+
+                    title: Text(item.title ?? ' Test'),
                     leading: Text(item.id.toString()),
                     /*
                     trailing: Checkbox(
@@ -65,7 +64,7 @@ class _Resultat extends State<Resultat> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
-          Service stmp = new Service(id : 1, name : 'Netflix');
+          Service stmp = new Service(id : 1, title : 'Netflix');
           await DBProvider.db.newService(stmp);
           //Client rnd = testClients[math.Random().nextInt(testClients.length)];
           //await DBProvider.db.newClient(rnd);

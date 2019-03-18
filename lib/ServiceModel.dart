@@ -12,20 +12,20 @@ String serviceToJson(Service data) {
 
 class Service {
   int id;
-  String name;
+  String title;
 
   Service({
     this.id,
-    this.name,
+    this.title,
   });
 
   factory Service.fromMap(Map<String, dynamic> json) => new Service(
     id: json["id"],
-    name: json["first_name"],
+    title: json["title"],
   );
 
   Map<String, dynamic> toMap() => {
     "id": id,
-    "name": name,
+    "title": title,
   };
 }

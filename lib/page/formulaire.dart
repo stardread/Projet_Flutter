@@ -29,7 +29,7 @@ class _Formulaire extends State<Formulaire> {
             new RaisedButton(
               onPressed: () async{
 
-                Service rnd = new Service(id: 5, name: nameController.text);
+                Service rnd = new Service(id: 5, title: nameController.text);
                 await DBProvider.db.newService(rnd);
                 setState(() {});
               },
