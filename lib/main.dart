@@ -3,32 +3,26 @@ import 'package:flutter/material.dart';
 
 import './page/sevices.dart';
 import './page/formulaire.dart';
-import 'package:device_info/device_info.dart';
+import './page/infos.dart';
+import './page/resultat.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
 
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+void main() => runApp(MyHomePage());
 
 class MyHomePage extends StatelessWidget {
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+      ),
       home: DefaultTabController(
         length: 4,
+
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
@@ -45,11 +39,13 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
             title: Text('Tabs Demo'),
+
           ),
           body: TabBarView(
             children: [
               Services(),
               Formulaire(),
+              Resultat(),
               Icon(Icons.directions_bike),
             ],
           ),
