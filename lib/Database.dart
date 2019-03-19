@@ -122,15 +122,20 @@ class DBProvider {
   // Partie Service
   newService(Service newService) async {
     final db = await database;
+
+    var res = await db.rawQuery("SELECT id FROM Service WHERE title = ?", [newService.title]);
+
+    if (res.isEmpty) {
+      var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM Service");
+      int id = table.first["id"];
+      //insert to the table using the new id
+      var raw = await db.rawInsert(
+          "INSERT Into Service (id,title)"
+              " VALUES (?,?)",
+          [id, newService.title]);
+      return raw;
+    }
     //get the biggest id in the table
-    var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM Service");
-    int id = table.first["id"];
-    //insert to the table using the new id
-    var raw = await db.rawInsert(
-        "INSERT Into Service (id,title)"
-            " VALUES (?,?)",
-        [id, newService.title]);
-    return raw;
   }
 
   Future<List<Service>> getAllService() async {

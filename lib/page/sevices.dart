@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:http/http.dart' as http;
 import './formulaire.dart';
@@ -16,32 +17,40 @@ class Services extends StatefulWidget {
 
 class _Services extends State<Services> {
 
-  String url = 'https://raw.githubusercontent.com/stardread/Projet_Flutter/kevin/assets/service.json';
+
   List data;
-  Future<String> makeRequest() async {
+/*
+  String url = 'https://raw.githubusercontent.com/stardread/Projet_Flutter/kevin/assets/service.json';
+
+  makeRequest() async {
+
     var response = await http
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
 
     setState(() {
       var extractdata = json.decode(response.body);
       data = extractdata["services"];
-
     });
-/*
-    var itemCount =  (data == null) ? 0 : data.length;
-    for (var i ; i< itemCount; i++) {
-      DBProvider.db.newService(new Service(id : 1, title : data[i]["title"]));
-      setState(() {});
-    }
+
+  }
 */
-    //Client rnd = testClients[math.Random().nextInt(testClients.length)];
-    //await DBProvider.db.newClient(rnd);
+
+  loadAsset() async {
+    //return await rootBundle.loadString('assets/service.json');
+    String dataTMP = await DefaultAssetBundle.of(context).loadString("assets/service.json");
+
+    setState(() {
+      var extractdata = json.decode(dataTMP);
+      data = extractdata["services"];
+    });
 
   }
 
+
   @override
   void initState() {
-    this.makeRequest();
+    //this.makeRequest();
+    this.loadAsset();
   }
 
   @override
@@ -52,6 +61,9 @@ class _Services extends State<Services> {
             itemCount: data == null ? 0 : data.length,
             itemBuilder: (BuildContext context, i) {
               DBProvider.db.newService(new Service(id : 1, title : data[i]["title"]));
+              print("Load Asset exmple !!! : " );
+              print(data);
+
               return new ListTile(
                 title: new Text(data[i]["title"]),
                 leading: new CircleAvatar(
