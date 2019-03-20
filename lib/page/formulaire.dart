@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../ServiceModel.dart';
 import '../Database.dart';
+
+import '../InscriptionModel.dart';
 import 'dart:math' as math;
 
 

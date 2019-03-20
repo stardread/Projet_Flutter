@@ -7,6 +7,7 @@ import './ClientModel.dart';
 import 'package:sqflite/sqflite.dart';
 
 import './ServiceModel.dart';
+import './InscriptionModel.dart';
 
 class DBProvider {
   DBProvider._();
@@ -34,6 +35,13 @@ class DBProvider {
               "id INTEGER PRIMARY KEY,"
               "title TEXT"
               ")");
+          await db.execute(
+              "CREATE TABLE ServiceData ("
+              "id INTEGER PRIMARY KEY,"
+              "data TEXT,"
+              "idService int REFERENCES Service(id)"
+              ")");
+
         });
 
 
@@ -142,6 +150,30 @@ class DBProvider {
     final db = await database;
     var res = await db.query("Service");
     List<Service> list =
+    res.isNotEmpty ? res.map((c) => Service.fromMap(c)).toList() : [];
+    return list;
+  }
+
+
+  newInscription(Inscription newInscription) async {
+    final db = await database;
+
+    var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM ServiceData");
+    int id = table.first["id"];
+    //insert to the table using the new id
+    var raw = await db.rawInsert(
+        "INSERT Into ServiceData (id,data, idService)"
+            " VALUES (?,?,?)",
+        [id, newInscription.data, newInscription.idService]);
+    return raw;
+
+    //get the biggest id in the table
+  }
+
+  Future<List<Inscription>> getAllInscription() async {
+    final db = await database;
+    var res = await db.query("ServiceData");
+    List<Inscription> list =
     res.isNotEmpty ? res.map((c) => Service.fromMap(c)).toList() : [];
     return list;
   }
