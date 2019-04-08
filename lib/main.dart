@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import './page/sevices.dart';
 import './page/formulaire.dart';
+import './page/groupe.dart';
 import './page/infos.dart';
 import './page/resultat.dart';
 
@@ -26,6 +27,7 @@ class MyHomePage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
+              isScrollable: true,
               tabs: [
                 /*
                 Tab(icon: Icon(Icons.directions_car)),
@@ -46,7 +48,7 @@ class MyHomePage extends StatelessWidget {
               Services(),
               Formulaire(),
               Resultat(),
-              Icon(Icons.directions_bike),
+              Groupe(),
             ],
           ),
         ),

@@ -1,0 +1,27 @@
+{
+  "membres": [{
+    "nom": "LAMPIN DENOVAN",
+    "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+    "photo" : "assets/photo/denovan.png",
+    "couleur" : "0xfff5a623"
+    },
+    {
+      "nom": "GOBLET ROMAIN",
+      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+      "photo" : "assets/photo/romain.jpg",
+      "couleur" : "0xff203152"
+    },
+    {
+      "nom": "BONTEMPS KEVIN",
+      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+      "photo" : "assets/photo/kevin.jpg",
+      "couleur" : "0x884466CC"
+    },
+    {
+      "nom": "LETERTRE JULIEN",
+      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+      "photo" : "assets/photo/kevin.jpg",
+      "couleur" : "0xff9932CC"
+    }
+  ]
+}
