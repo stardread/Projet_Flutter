@@ -21,12 +21,6 @@
 				},
 				{
 					"section": "info",
-					"type": "radioGroup",
-					"value": ["Homme","femme"],
-					"mandatory": "false"
-				},
-				{
-					"section": "info",
 					"type": "edit",
 					"value": ["Ville"],
 					"mandatory": "false"
@@ -38,11 +32,43 @@
 					"mandatory": "true"
 				},
 				{
-					"section": "abonnement",
-					"type": "radioGroup",
-					"value": ["3 mois", "6 mois", "1 an"],
-					"mandatory": "true"
+				"type": "RadioButton",
+				"title": "Radio Button tests",
+				"value": 2,
+				"list": [
+				  {
+					"title": "product 1",
+					"value": 1
+				  },
+				  {
+					"title": "product 2",
+					"value": 2
+				  },
+				  {
+					"title": "product 3",
+					"value": 3
+				  }
+				]
+			  },
+			  {
+			  "type": "RadioButton",
+			  "title": "Radio Button tests2",
+			  "value": 2,
+			  "list": [
+				{
+				  "title": "product 1",
+				  "value": 1
 				},
+				{
+				  "title": "product 2",
+				  "value": 2
+				},
+				{
+				  "title": "product 3",
+				  "value": 3
+				}
+			  ]
+			},
 				{
 					"section": "newsletter",
 					"type": "label",
