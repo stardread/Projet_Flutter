@@ -19,51 +19,8 @@ class Groupe extends StatefulWidget {
 
 
 
-class _Groupe extends State<Groupe> {
-  @override
-  Widget build(BuildContext context) {
-    final title = 'Horizontal List';
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Container(
-          margin: EdgeInsets.symmetric(vertical: 20.0),
-          height: 200.0,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Container(
-                width: 160.0,
-                color: Colors.red,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.blue,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.green,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.yellow,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.orange,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-/*
+
 class _Groupe extends State<Groupe> {
 
   List<Slide> slides = new List();
@@ -84,21 +41,7 @@ class _Groupe extends State<Groupe> {
   void initState() {
     //this.makeRequest();
     this.loadAsset();
-    /*
-    var itemCount = data.length;
-    for (int i = 0; i<4; i++) {
-      slides.add(
-        new Slide(
-          title : data[i]["nom"],
-          description: "Allow miles wound place the leave had. To sitting subject no improve studied limited",
-          pathImage: "images/photo_eraser.png",
-          backgroundColor: Color(0xfff5a623),
 
-        )
-      );
-
-    }
-    */
 
   }
 
@@ -126,12 +69,17 @@ class _Groupe extends State<Groupe> {
 
   @override
   Widget build(BuildContext context) {
-    this.addintoSlide();
-    return new IntroSlider(
 
-      slides: this.slides,
+    if(data != null){
+      this.addintoSlide();
+      return new IntroSlider(
+        slides: this.slides,
 
-    );
+      );
+    }
+    else {
+      return Center(child: CircularProgressIndicator());
+    }
+
   }
 }
-*/

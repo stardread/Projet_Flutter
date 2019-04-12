@@ -28,6 +28,7 @@ class DBProvider {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "TestDB.db"); //TestDB premier nom
     print(path);
+    print(path);
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
           await db.execute(
@@ -41,6 +42,9 @@ class DBProvider {
               "data TEXT,"
               "idService int REFERENCES Service(id)"
               ")");
+          await db.execute(
+              "INSERT INTO ServiceData (id, data, idService) VALUES"
+                  "(1, 'Nom : LAMPIN ; Prenom : Denovan; ', 1);");
 
         });
 

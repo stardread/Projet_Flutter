@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../ClientModel.dart';
+import '../InscriptionModel.dart';
 import '../ServiceModel.dart';
 import '../Database.dart';
 import 'dart:math' as math;
@@ -20,21 +21,21 @@ class _Resultat extends State<Resultat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Service>>(
-        future: DBProvider.db.getAllService(),
-        builder: (BuildContext context, AsyncSnapshot<List<Service>> snapshot) {
+      body: FutureBuilder<List<Inscription>>(
+        future: DBProvider.db.getAllInscription(),
+        builder: (BuildContext context, AsyncSnapshot<List<Inscription>> snapshot) {
 
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
-                Service item = snapshot.data[index];
+                Inscription item = snapshot.data[index];
                 return Dismissible(
                   key: UniqueKey(),
                   background: Container(color: Colors.red),
                   child: ListTile(
 
-                    title: Text(item.title ?? ' Test'),
+                    title: Text(item.data.toString() ?? ' Test'),
                     leading: Text(item.id.toString()),
                     /*
                     trailing: Checkbox(
@@ -53,17 +54,7 @@ class _Resultat extends State<Resultat> {
             return Center(child: CircularProgressIndicator());
           }
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async {
-          Service stmp = new Service(id : 1, title : 'Netflix');
-          await DBProvider.db.newService(stmp);
-          //Client rnd = testClients[math.Random().nextInt(testClients.length)];
-          //await DBProvider.db.newClient(rnd);
-          setState(() {});
-        },
-      ),
+      )
     );
   }
 }

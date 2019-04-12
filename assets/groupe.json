@@ -1,26 +1,27 @@
 {
-  "membres": [{
-    "nom": "LAMPIN DENOVAN",
-    "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
-    "photo" : "assets/photo/denovan.png",
-    "couleur" : "0xfff5a623"
-    },
+  "membres": [
     {
       "nom": "GOBLET ROMAIN",
-      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+      "description" : "Je crois que tout ce qui ne nous tue pas nous rend simplement plus bizarre.+",
       "photo" : "assets/photo/romain.jpg",
       "couleur" : "0xff203152"
     },
     {
+      "nom": "LAMPIN DENOVAN",
+      "description" : "Champion de mma : 78 victoire par KO pour 8 defaite ! Je vous attend dans l'octogone !",
+      "photo" : "assets/photo/denovan.jpg",
+      "couleur" : "0xfff5a623"
+    },
+    {
       "nom": "BONTEMPS KEVIN",
-      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+      "description" : "A la recherche de 118, si vous le trouvez appeler le 218 ...",
       "photo" : "assets/photo/kevin.jpg",
       "couleur" : "0x884466CC"
     },
     {
       "nom": "LETERTRE JULIEN",
-      "description" : "Allow miles wound place the leave had. To sitting subject no improve studied limited",
-      "photo" : "assets/photo/kevin.jpg",
+      "description" : "Corsaire de pere en fils depuis l'an 969, il devient pirate suite a une soirée trop arosée au Rhum avec Jack Sparrow ... ",
+      "photo" : "assets/photo/julien.jpg",
       "couleur" : "0xff9932CC"
     }
   ]

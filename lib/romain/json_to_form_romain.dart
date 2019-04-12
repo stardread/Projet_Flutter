@@ -136,11 +136,14 @@ class _CoreFormState extends State<CoreForm> {
         }
         list_widget.add(
           new Row(children: <Widget>[
-            new Chip(
+            new FilterChip(
               avatar: CircleAvatar(
                 backgroundColor: Colors.grey.shade800
               ),
-              label: Text(item['value'][0])
+              label: Text(item['value'][0]),
+              onSelected: (bool value) {
+                flag = value;
+              },
             )
           ]),
         );

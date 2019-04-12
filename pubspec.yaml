@@ -26,6 +26,7 @@ dependencies:
   json_to_form: ^0.0.2
   intro_slider: ^1.1.8
   carousel_pro: ^0.0.13
+  system_info: ^0.1.1
 
 dev_dependencies:
   flutter_test:
