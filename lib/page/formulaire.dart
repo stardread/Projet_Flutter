@@ -25,25 +25,23 @@ class Formulaire extends StatefulWidget {
 class _Formulaire extends State<Formulaire> {
   String url = 'https://raw.githubusercontent.com/stardread/Projet_Flutter/kevin/assets/service.json';
   String data;
-
   int index;
-  String nameOfService;
+  String nameOfService = "";
 
   _Formulaire(int index){
     this.index = index;
-    print("Index : "+ index.toString());
   }
 
 
   Future<String> makeRequest() async {
-    //return await rootBundle.loadString('assets/service.json');
-    String dataTMP = await DefaultAssetBundle.of(context).loadString("assets/service.json");
+    var response = await http
+        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
 
     setState(() {
-      var extractdata = json.decode(dataTMP);
+      var extractdata = json.decode(response.body);
+      //for pour rajouter value dans radiobox
       data = json.encode(extractdata['services'][index]['elements']);
-      nameOfService = json.encode(extractdata['services'][index]['title']).toString();
-      print("nameofService : "+ nameOfService);
+      nameOfService = json.encode(extractdata['services'][index]['title']);
     });
   }
   @override
