@@ -53,30 +53,37 @@ class _Formulaire extends State<Formulaire> {
   dynamic response;
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(nameOfService),
-      ),
-      body: new SingleChildScrollView(
-        child: new Container(
-          child: new Column(children: <Widget>[
-            new CoreForm(
-              form: data,
-              onChanged: (dynamic response) {
-                this.response = response;
-              },
-            ),
-
-            new RaisedButton(
-                child: new Text('Send'),
-                onPressed: () {
-                  //this.response
-                  print("response !!!!!!!!!!!!!!!!!!!! " + response.toString());
-                  //print(this.response.toString());
-                })
-          ]),
+    if(data != null) {
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text(nameOfService),
         ),
-      ),
-    );
+        body: new SingleChildScrollView(
+          child: new Container(
+            child: new Column(children: <Widget>[
+              new CoreForm(
+                form: data,
+                onChanged: (dynamic response) {
+                  this.response = response;
+                },
+              ),
+
+              new RaisedButton(
+                  child: new Text('Send'),
+                  onPressed: () {
+                    //this.response
+                    print("response !!!!!!!!!!!!!!!!!!!! " + response.toString());
+                    //print(this.response.toString());
+                  })
+            ]),
+          ),
+        ),
+      );
+    }
+    else{
+      return Center(child: CircularProgressIndicator());
+
+    }
+
   }
 }
