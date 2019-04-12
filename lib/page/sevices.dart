@@ -77,9 +77,11 @@ class _Services extends State<Services> {
                           builder: (BuildContext context) =>
                           //new SecondPage(data[i])
 
-                          new Formulaire()
+                          new Formulaire(i)
                       ));
                 },
+
+
               );
             }
         )
