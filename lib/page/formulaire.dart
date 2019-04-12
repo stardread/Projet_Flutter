@@ -86,7 +86,7 @@ class _Formulaire extends State<Formulaire> {
               ),
 
               new RaisedButton(
-                  child: new Text('Send'),
+                  child: new Text('Envoyer'),
                   onPressed: () {
                     //this.response
                     setResponse(response);

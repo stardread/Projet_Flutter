@@ -7,6 +7,7 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:http/http.dart' as http;
+import 'package:projet/page/infos.dart';
 import './formulaire.dart';
 import '../ServiceModel.dart';
 import '../Database.dart';
@@ -61,6 +62,8 @@ class _Groupe extends State<Groupe> {
 
   void onDonePress() {
     // TODO: go to next screen
+    new Info();
+    print("estedfg");
   }
 
   void onSkipPress() {
