@@ -55,7 +55,7 @@ class MyHomePage extends StatelessWidget {
                 Tab(child: AutoSizeText("Groupe", style : TextStyle(fontSize: 10.0), maxLines: 1)),
               ],
             ),
-            title: Text('Tabs Demo'),
+            title: Text('Projet Flutter'),
             actions: <Widget>[
               new IconButton(icon: Icon(Icons.info), onPressed: () {
                 //_tabController.previousIndex;

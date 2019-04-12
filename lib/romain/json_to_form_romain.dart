@@ -29,6 +29,8 @@ class _CoreFormState extends State<CoreForm> {
 
   String _selected;
 
+  bool _isSelected = false;
+
 
   List<Widget> JsonToForm() {
     List<Widget> list_widget = new List<Widget>();
@@ -36,11 +38,13 @@ class _CoreFormState extends State<CoreForm> {
     for (var count = 0; count < form_items.length; count++) {
       if(form_items[count]['type'] == "radioGroup")
       {
-        print(form_items[count]);
         form_items[count]['type'] = "RadioButton";
         form_items[count]['list']=form_items[count]['value'];
         form_items[count]['value']=form_items[count]['list'][0];
-        print(form_items[count]);
+      }
+      else if(form_items[count]['type'] == "button")
+      {
+        form_items[count]['val'] = false;
       }
       dynamic item = form_items[count];
 
@@ -124,23 +128,19 @@ class _CoreFormState extends State<CoreForm> {
                     fontWeight: FontWeight.bold, fontSize: 16.0))));
       }
 
-      if (item['type'] == "button") {
-        bool flag = true;
-        if(item['value'][0]=="true")
-        {
-          flag = true;
-        }
-        else
-        {
-          flag = false;
-        }
+      if (item['type'] == "button") {   
+          
         list_widget.add(
           new Row(children: <Widget>[
-            new Chip(
-              avatar: CircleAvatar(
-                backgroundColor: Colors.grey.shade800
-              ),
-              label: Text(item['value'][0])
+            new FilterChip(
+              label: Text(item['value'][0]),
+              selected: _isSelected,
+              onSelected: (bool isSelected) {
+                this.setState(() {
+                     _isSelected = isSelected;   
+                  });
+              },
+              selectedColor: Color(0xFFC6FF00),
             )
           ]),
         );
