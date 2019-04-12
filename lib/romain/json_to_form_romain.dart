@@ -34,21 +34,24 @@ class _CoreFormState extends State<CoreForm> {
     List<Widget> list_widget = new List<Widget>();
 
     for (var count = 0; count < form_items.length; count++) {
-      /*if(form_items[count]['type'] == "radioGroup")
+      if(form_items[count]['type'] == "radioGroup")
       {
-        form_items[count]['values']=form_items[count]['value'];
-        form_items[count]['value']=form_items[count]['values'][0];
-      }*/
+        print(form_items[count]);
+        form_items[count]['type'] = "RadioButton";
+        form_items[count]['list']=form_items[count]['value'];
+        form_items[count]['value']=form_items[count]['list'][0];
+        print(form_items[count]);
+      }
       dynamic item = form_items[count];
 
       if (item['type'] == "edit" ||
           item['type'] == "TareaText") {
-        list_widget.add(new Container(
+        /*list_widget.add(new Container(
             padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
             child: new Text(
               item['value'][0],
               style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-            )));
+            )));*/
         list_widget.add(new TextField(
           controller: null,
           decoration: new InputDecoration(
@@ -62,26 +65,25 @@ class _CoreFormState extends State<CoreForm> {
           obscureText: item['type'] == "Password" ? true : false,
         ));
       }
-
-      if (item['type'] == "radioGroup") {
-
-        list_widget.add(new Container(
+     
+      if (item['type'] == "RadioButton") {
+        /*list_widget.add(new Container(
             margin: new EdgeInsets.only(top: 5.0, bottom: 5.0),
-            child: new Text(/*item['title']*/"",
+            child: new Text(item['section'],
                 style: new TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 16.0))));
-        //radioValue = item['value'];
-        for (var i = 0; i < item['value'].length; i++) {
+                    fontWeight: FontWeight.bold, fontSize: 16.0))));*/
+        radioValue = item['value'];
+        for (var i = 0; i < item['list'].length; i++) {
           list_widget.add(new Row(children: <Widget>[
             new Expanded(
-                child: new Text(item['value'][i])),
-            new Radio(
-                value: item['value'][i],
-                groupValue: _selected,
-                onChanged: (dynamic value) {
+                child: new Text(form_items[count]['list'][i])),
+            new Radio<String>(
+                value: form_items[count]['list'][i],
+                groupValue: radioValue,
+                onChanged: (String value) {
                   this.setState(() {
-                    _selected = value;
-
+                    radioValue = value;
+                    form_items[count]['value'] = value;
                     _handleChanged();
                   });
                 })
@@ -101,7 +103,7 @@ class _CoreFormState extends State<CoreForm> {
         }
         list_widget.add(
           new Row(children: <Widget>[
-            new Expanded(child: new Text(item['section'])),
+            //new Expanded(child: new Text(item['section'])),
             new Switch(
                 value: flag,
                 onChanged: (bool value) {
@@ -112,6 +114,14 @@ class _CoreFormState extends State<CoreForm> {
                 })
           ]),
         );
+      }
+
+      if (item['type'] == "label") {
+        list_widget.add(new Container(
+            margin: new EdgeInsets.only(top: 5.0, bottom: 5.0),
+            child: new Text(item['value'][0],
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16.0))));
       }
 
       if (item['type'] == "button") {
@@ -127,11 +137,10 @@ class _CoreFormState extends State<CoreForm> {
         list_widget.add(
           new Row(children: <Widget>[
             new Chip(
-                avatar: CircleAvatar(
-                  backgroundColor: Colors.grey.shade800,
-                  child: Text('AB'),
-                ),
-                label: Text(item['value'][0])
+              avatar: CircleAvatar(
+                backgroundColor: Colors.grey.shade800
+              ),
+              label: Text(item['value'][0])
             )
           ]),
         );
