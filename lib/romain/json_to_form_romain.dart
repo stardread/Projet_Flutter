@@ -114,26 +114,27 @@ class _CoreFormState extends State<CoreForm> {
         );
       }
 
-      if (item['type'] == "Checkbox") {
-        list_widget.add(new Container(
-            margin: new EdgeInsets.only(top: 5.0, bottom: 5.0),
-            child: new Text(item['title'],
-                style: new TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 16.0))));
-        for (var i = 0; i < item['list'].length; i++) {
-          list_widget.add(new Row(children: <Widget>[
-            new Expanded(
-                child: new Text(form_items[count]['list'][i]['title'])),
-            new Checkbox(
-                value: form_items[count]['list'][i]['value'],
-                onChanged: (bool value) {
-                  this.setState(() {
-                    form_items[count]['list'][i]['value'] = value;
-                    _handleChanged();
-                  });
-                })
-          ]));
+      if (item['type'] == "button") {
+        bool flag = true;
+        if(item['value'][0]=="true")
+        {
+          flag = true;
         }
+        else
+        {
+          flag = false;
+        }
+        list_widget.add(
+          new Row(children: <Widget>[
+            new Chip(
+                avatar: CircleAvatar(
+                  backgroundColor: Colors.grey.shade800,
+                  child: Text('AB'),
+                ),
+                label: Text(item['value'][0])
+            )
+          ]),
+        );
       }
     }
     return list_widget;

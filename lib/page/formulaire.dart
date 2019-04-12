@@ -34,11 +34,10 @@ class _Formulaire extends State<Formulaire> {
 
 
   Future<String> makeRequest() async {
-    var response = await http
-        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+    String response = await DefaultAssetBundle.of(context).loadString("assets/service.json");
 
     setState(() {
-      var extractdata = json.decode(response.body);
+      var extractdata = json.decode(response);
       //for pour rajouter value dans radiobox
       data = json.encode(extractdata['services'][index]['elements']);
       nameOfService = json.encode(extractdata['services'][index]['title']);
