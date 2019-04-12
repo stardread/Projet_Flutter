@@ -13,13 +13,6 @@ class Resultat extends StatefulWidget {
 class _Resultat extends State<Resultat> {
 
 
-  List<Client> testClients = [
-    Client(firstName: "Raouf", lastName: "Rahiche", blocked: false),
-    Client(firstName: "Zaki", lastName: "oun", blocked: true),
-    Client(firstName: "oussama", lastName: "ali", blocked: false),
-  ];
-  var sendersList = ['test1', 'test2', 'test3'];
-  var subjectList = ['description1', 'description2', 'description3'];
   final nameController = new TextEditingController();
   final resController = new TextEditingController();
   String tmp = "Test ";

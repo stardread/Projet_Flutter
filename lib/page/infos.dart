@@ -13,14 +13,17 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
 
   getInfo() {
-
+  print("infos !!!!!!!!!!!!!!!");
 
   }
+
+
 
 
   String device = "";
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
       body : new Column(
         children: <Widget>[

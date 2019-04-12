@@ -13,9 +13,24 @@ void main() => runApp(MyHomePage());
 
 class MyHomePage extends StatelessWidget {
 
+  //TabController _tabController = new TabController(length: 4, vsync: null);
+
+  /*
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: myTabs.length);
+  }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+  */
+  @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -23,10 +38,10 @@ class MyHomePage extends StatelessWidget {
       ),
       home: DefaultTabController(
         length: 4,
-
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
+              //controller: _tabController,
               isScrollable: true,
               tabs: [
                 /*
@@ -41,12 +56,20 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
             title: Text('Tabs Demo'),
+            actions: <Widget>[
+              new IconButton(icon: Icon(Icons.info), onPressed: () {
+                //_tabController.previousIndex;
+                new Info();
+                print("OK");
+              })
+
+            ],
 
           ),
           body: TabBarView(
             children: [
               Services(),
-              Formulaire(),
+              Formulaire(0),
               Resultat(),
               Groupe(),
             ],
